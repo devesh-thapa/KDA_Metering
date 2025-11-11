@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Available Flights</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
+  <link rel="icon" type="image/png" href="images/logoFavicon.png"/>
+  <link rel="shortcut icon" href="images/logofavicon.ico"/>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="https://eng1003.monash/libs/services.js"></script>
+  <link rel="stylesheet" href="styles/availableFlights.css">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-color: #e6e6ff">  <!--#BBCCE1 #D4E6F1 #CFE5FF-->
+<div class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--scroll">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title" id ="page-title">&#160;&#160;Doctors without Borders</span>
+      <div class="mdl-layout-spacer"></div>
+      <img src="images/updatedLogo.png" style="width:50px;height:50px;">
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title" id = "nav-title">&#160;<b>DW/OB</b></span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="homePage.html"><span class="material-icons">home</span>&#160;<b>Home</b></a>
+      <a class="mdl-navigation__link" href="fleetInformation.html">Fleet Information</a>
+      <a class="mdl-navigation__link" href="bookFlight.html">Schedule a Flight</a>
+        <a class="mdl-navigation__link" href="pastFlights.html">Past Flights</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div><br><br></div>
+    <div class="mdl-grid">
+            <table style="width:90%;margin-right:auto;margin-left:auto" class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+              <thead>
+                <tr>
+                 <th class="mdl-data-table__cell--non-numeric"><h5>Available Flights</h5></th>
+               </tr>
+                <tr>
+                  <th style = "border: none;" class="mdl-data-table mdl-js-data-table mdl-data-table"></th>
+                  <th class="mdl-data-table mdl-js-data-table mdl-data-table">ID</th>
+                  <th class="mdl-data-table mdl-js-data-table mdl-data-table">Registration</th>
+                  <th class="mdl-data-table mdl-js-data-table mdl-data-table"><img src="https://img.icons8.com/ios/15/000000/airplane-mode-on.png"/>&#160;&#160;Location</th>
+                  <th class="mdl-data-table mdl-js-data-table mdl-data-table">Range (km)</th>
+                  <th class="mdl-data-table mdl-js-data-table mdl-data-table">Average Speed (knots)</th>
+                  <th class="mdl-data-table mdl-js-data-table mdl-data-table">Type</th>
+                  <th class="mdl-data-table mdl-js-data-table mdl-data-table">Status</th>
+                  <th class="mdl-data-table mdl-js-data-table mdl-data-table">Airline</th></tr></thead>
+                </tr>
+              <tbody class="mdl-data-table mdl-js-data-table mdl-data-table" id="flight-table">
+
+              </tbody>
+            </table style="width:90%;margin-right:auto;margin-left:auto" class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+        </div>
+        <table>
+          <tbody class="mdl-data-table mdl-js-data-table mdl-data-table" id="airportInRange">
+        </table>
+        <br>
+        <div class="page-content">
+          <div id = "map">
+          </div>
+          <br>
+          <div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="window.location.href = 'bookFlight.html';" style="margin-left: 75px">Back</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id = "reset" onclick="window.location.href = 'availableFlights.html';" style="margin-left: 75px">Reset</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id = "select-plane" style="margin-left: 450px">Select Plane</button><!--onclick="toNextAirport()"-->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="show-route" onclick="routes()" style="margin-left: 75px">Show Route</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id = "confirm-page" onclick="window.location.href = 'confirmFlights.html';" style="margin-left: 75px">Confirm</button>
+          </div>
+        </div>
+        <br><br>
+  </main>
+  <script src = "scripts/availableFlights.js"></script>
+  <script src = "scripts/availableFlightsMap.js"></script>
+</body>
+</html>
